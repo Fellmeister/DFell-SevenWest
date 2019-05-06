@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.572
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SevenWest.Main", "SevenWest.Main\SevenWest.Main.csproj", "{7B70442F-38F6-4ECC-B63F-8FB048E1DB8C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SevenWest.Main", "SevenWest.Main\SevenWest.Main.csproj", "{7B70442F-38F6-4ECC-B63F-8FB048E1DB8C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SevenWest.Core", "SevenWest.Core\SevenWest.Core.csproj", "{7557C934-6192-4BDE-8B56-DA20368B0547}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SevenWest.Core", "SevenWest.Core\SevenWest.Core.csproj", "{7557C934-6192-4BDE-8B56-DA20368B0547}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SevenWest.Test", "SevenWest.Test\SevenWest.Test.csproj", "{6478F012-64E1-4C5C-8BFB-19E185F3E146}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{7557C934-6192-4BDE-8B56-DA20368B0547}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7557C934-6192-4BDE-8B56-DA20368B0547}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7557C934-6192-4BDE-8B56-DA20368B0547}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6478F012-64E1-4C5C-8BFB-19E185F3E146}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6478F012-64E1-4C5C-8BFB-19E185F3E146}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6478F012-64E1-4C5C-8BFB-19E185F3E146}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6478F012-64E1-4C5C-8BFB-19E185F3E146}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
