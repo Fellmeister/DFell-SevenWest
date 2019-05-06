@@ -18,6 +18,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\SevenWest.Core\SevenWest.Core.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Reference Include="Shouldly">
       <HintPath>..\..\..\..\..\Users\daniel.fell\.nuget\packages\shouldly\3.0.2\lib\netstandard2.0\Shouldly.dll</HintPath>
     </Reference>
