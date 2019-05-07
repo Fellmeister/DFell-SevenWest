@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using Newtonsoft.Json;
 using Shouldly;
@@ -10,12 +9,6 @@ namespace SevenWest.Test
 {
     public class MethodsTest
     {
-        [Fact]
-        public void Test1()
-        {
-
-        }
-
         private string jsonString =
             @"[{ 'id': 53, 'first': 'Bill', 'last': 'Bryson', 'age':23, 'gender':'M' },
                         { 'id': 62, 'first': 'John', 'last': 'Travolta', 'age':54, 'gender':'M' },
@@ -29,7 +22,6 @@ namespace SevenWest.Test
             return JsonConvert.DeserializeObject<List<Person>>(jsonString);
         }
 
-        // TODO Tests here 
         [Fact]
         public void ShouldBeValidGenderEntries()
         {
@@ -39,24 +31,70 @@ namespace SevenWest.Test
 
             // Act
 
+            // Assert
+            allGendersAreValid.ShouldBeFalse();
+        }
+
+        [Fact]
+        public void ShouldReturnFullNameForValidID()
+        {
+            // Arrange
+            var id = 41;
+            var inputData = StubDataInput();
+
+            // Act
+            var retVal = inputData.FindFullNameById(id);
 
             // Assert
-            allGendersAreValid.ShouldBeTrue();
-
-
-
+            retVal.ShouldNotBeNullOrEmpty();
+            retVal.ShouldMatch("Frank Zappa"); 
 
         }
 
         [Fact]
-        public void ShouldBeInputFieldsAreCorrect()
+        public void ShouldNotReturnFullNameForInvalidID()
         {
             // Arrange
-            var code = 4;
+            var id = 0;
+            var inputData = StubDataInput();
 
             // Act
+            var retVal = inputData.FindFullNameById(id);
+
             // Assert
-            code.ShouldBeGreaterThan(3);
+            retVal.ShouldBeNullOrEmpty();
+
         }
+
+        [Fact]
+        public void ShouldReturnFirstNamesForGivenAge()
+        {
+            // Arrange
+            var age = 23;
+            var inputData = StubDataInput();
+
+            // Act
+            var retVal = inputData.FindFirstNamesByAge(age);
+
+            // Assert
+            retVal.ShouldNotBeNullOrEmpty();
+
+        }
+
+        [Fact]
+        public void ShouldReturnNullForGivenAge()
+        {
+            // Arrange
+            var age = 120;
+            var inputData = StubDataInput();
+
+            // Act
+            var retVal = inputData.FindFirstNamesByAge(age);
+
+            // Assert
+            retVal.ShouldBeNullOrEmpty();
+
+        }
+
     }
 }
