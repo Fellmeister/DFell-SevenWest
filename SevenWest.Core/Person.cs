@@ -5,7 +5,7 @@ using System.Text;
 
 namespace SevenWest.Core
 {
-    public class Person
+    public class Person : IPerson
     {
         public int Id { get; set; }
         public string First { get; set; }
