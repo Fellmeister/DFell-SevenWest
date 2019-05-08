@@ -9,12 +9,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SevenWest.Core", "SevenWest
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SevenWest.Test", "SevenWest.Test\SevenWest.Test.csproj", "{6478F012-64E1-4C5C-8BFB-19E185F3E146}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Resources", "Resources", "{DCE08BFD-6A32-4049-87D2-3D4E233F27D1}"
-	ProjectSection(SolutionItems) = preProject
-		..\..\..\..\Training\Revision\Core_20190213\Core\Core Technical Assignment_20190213.docx = ..\..\..\..\Training\Revision\Core_20190213\Core\Core Technical Assignment_20190213.docx
-		..\..\..\..\Training\Revision\Core_20190213\Core\example_data.json = ..\..\..\..\Training\Revision\Core_20190213\Core\example_data.json
-	EndProjectSection
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

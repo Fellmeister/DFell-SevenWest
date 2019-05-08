@@ -48,7 +48,7 @@ namespace SevenWest.Core
 
         private static int GetGenderCount(IGrouping<int, Person> t, char gender)
         {
-            return t.Where(person => person.Gender == gender).GroupBy(g => g.Gender).Count();
+            return t.Where(p => p.Gender == gender).GroupBy(g => g.Gender).Count();
         }
 
         public static bool IsValid(this IEnumerable<Person> source)
@@ -57,10 +57,9 @@ namespace SevenWest.Core
             // id ranges, first/last name lengths etc
             var enumerable = source as Person[] ?? source.ToArray();
 
-            return (!enumerable.Any(g => g.Gender != 'M' && g.Gender != 'F'))
+            return (!enumerable.Any(g => g.Gender != 'M' && g.Gender != 'F')) // Simplification of the current gender landscape for demo purposes only.
                 && !enumerable.Any(a => a.Age < 0)
                 && !enumerable.GroupBy(i => i.Id).Any(x => x.Count() > 1);
         }
     }
-
 }

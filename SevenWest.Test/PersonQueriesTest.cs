@@ -2,7 +2,6 @@ using System.Collections.Generic;
 using Newtonsoft.Json;
 using Shouldly;
 using Xunit;
-using System.Linq;
 using SevenWest.Core;
 
 namespace SevenWest.Test
@@ -17,11 +16,6 @@ namespace SevenWest.Test
                         { 'id': 32, 'first': 'Anna', 'last': 'Meredith', 'age':66, 'gender':'M' },
                         { 'id': 33, 'first': 'Janet', 'last': 'Jackson', 'age':66, 'gender':'F' }]";
 
-        private List<Person> StubValidDataInput()
-        {
-            return JsonConvert.DeserializeObject<List<Person>>(jsonStringValid);
-        }
-
         private string jsonStringInvalid =
                     @"[{ 'id': 53, 'first': 'Bill', 'last': 'Bryson', 'age':23, 'gender':'M' },
                         { 'id': 62, 'first': 'John', 'last': 'Travolta', 'age':54, 'gender':'M' },
@@ -30,22 +24,14 @@ namespace SevenWest.Test
                         { 'id': 31, 'first': 'Anna', 'last': 'Meredith', 'age':-12, 'gender':'Y' },
                         { 'id': 31, 'first': 'Janet', 'last': 'Jackson', 'age':66, 'gender':'F' }]";
 
+        private List<Person> StubValidDataInput()
+        {
+            return JsonConvert.DeserializeObject<List<Person>>(jsonStringValid);
+        }
+
         private List<Person> StubInvalidDataInput()
         {
             return JsonConvert.DeserializeObject<List<Person>>(jsonStringInvalid);
-        }
-
-        [Fact]
-        public void ShouldBeValidGenderEntries()
-        {
-            // Arrange
-            var inputData = StubValidDataInput();
-            bool allGendersAreValid = !inputData.Any(x => x.Gender != 'M' || x.Gender != 'F');
-
-            // Act
-
-            // Assert
-            allGendersAreValid.ShouldBeFalse();
         }
 
         [Fact]
@@ -75,7 +61,7 @@ namespace SevenWest.Test
             var retVal = inputData.FindFullNameById(id);
 
             // Assert
-            retVal.ShouldBeNullOrEmpty();
+            retVal.ShouldMatch($"No results found for id 0");
 
         }
 
@@ -91,11 +77,12 @@ namespace SevenWest.Test
 
             // Assert
             retVal.ShouldNotBeNullOrEmpty();
+            retVal.ShouldMatch("Bill,Frank");
 
         }
 
         [Fact]
-        public void ShouldReturnNullForGivenAge()
+        public void ShouldReturnNoResultsMessageForGivenAge()
         {
             // Arrange
             var age = 120;
@@ -105,12 +92,11 @@ namespace SevenWest.Test
             var retVal = inputData.FindFirstNamesByAge(age);
 
             // Assert
-            retVal.ShouldBeNullOrEmpty();
-
+            retVal.ShouldMatch($"No results found for age 120");
         }
 
         [Fact]
-        public void ShouldReturnAges()
+        public void ShouldReturnGendersForAges()
         {
             // Arrange
             var inputData = StubValidDataInput();
@@ -120,7 +106,7 @@ namespace SevenWest.Test
 
             // Assert
             retVal.ShouldNotBeNullOrEmpty();
-
+            retVal.ShouldMatch("Age: 23, Male: 1 Female:0\nAge: 54, Male: 1 Female:0\nAge: 66, Male: 1 Female:1\n");
         }
 
         [Fact]
